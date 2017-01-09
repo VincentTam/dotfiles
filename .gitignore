@@ -1,0 +1,11 @@
+vim/.vim/bundle/
+vim/.vim/autoload/
+vim/.vim/spell/
+.netrwhist
+node_modules
+*.swp
+*%*
+*~
+.DS_Store
+.ensime
+.ensime_cache

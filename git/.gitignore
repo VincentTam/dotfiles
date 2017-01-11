@@ -1,0 +1,24 @@
+# OS junk files
+._*
+*.swp
+*%*
+*~
+*.DS_Store
+.ensime
+.ensime_cache
+Desktop.ini
+[Tt]humbs.db
+
+# Compiled files
+*.javac
+*.pyc
+
+# PGP Keyrings
+pubring.*
+secring.*
+random_seed
+trustdb.*
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes

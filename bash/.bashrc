@@ -27,6 +27,11 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
+# Note: Bash on Windows does not currently apply umask properly.
+if [ "$(umask)" = "0000" ]; then
+    umask 022
+fi
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 

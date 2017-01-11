@@ -1,0 +1,7 @@
+[user]
+	email = sere@live.hk
+	name = Vincent Tam
+[core]
+	editor = vim
+[push]
+	default = simple

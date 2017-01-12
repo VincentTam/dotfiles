@@ -2,6 +2,27 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" ================= Vundle Config ====================
+
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Keep Plugin commands between vundle#begin/end.
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'bronson/vim-visual-star-search'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'Lokaltog/vim-easymotion'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 " TODO: this may not be in the correct place. It is intended to allow overriding <Leader>.
 " source ~/.vimrc.before if it exists.
 if filereadable(expand("~/.vimrc.before"))
@@ -70,14 +91,8 @@ set expandtab
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
 
-filetype plugin on
-filetype indent on
-
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
-
-set nowrap       "Don't wrap lines
-set linebreak    "Wrap lines at convenient points
 
 " ================ Folds ============================
 
@@ -99,6 +114,7 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.pdf
 
 "
 " ================ Scrolling ========================
@@ -113,6 +129,28 @@ set incsearch       " Find the next match as we type the search
 set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
+" Press Space to turn off highlighting and clear any message already displayed.
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " ================ Custom Settings ========================
-"so ~/.yadr/vim/settings.vim
+
+set textwidth=70
+set pastetoggle=<F5> " Practical Vim Tip 63
+
+" Practical Vim Tip 34: Avoid cursors when rcl'g cmd from hist
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+" vim-easy-algin settings start
+" Start interactive EasyAlign in visual mode
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign with a Vim movement
+nmap ga <Plug>(EasyAlign)
+" vim-easy-algin settings end
+
+" Improve visibility of cursor
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"

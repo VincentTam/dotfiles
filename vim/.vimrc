@@ -12,12 +12,30 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
-Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'bronson/vim-visual-star-search'
+Plugin 'tpope/vim-repeat'
+
 Plugin 'junegunn/vim-easy-align'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'bronson/vim-visual-star-search'
+Plugin 'visualrepeat'
+
+Plugin 'vim-latex/vim-latex'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'kana/vim-textobj-lastpat'
+Plugin 'kana/vim-textobj-user'
+Plugin 'sgur/vim-textobj-parameter'
+Plugin 'thinca/vim-textobj-between'
+
+Plugin 'tomtom/tlib_vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -82,9 +100,9 @@ endif
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set expandtab
 
 " Auto indent pasted text
@@ -145,28 +163,88 @@ cnoremap <C-n> <Down>
 " Start interactive EasyAlign in visual mode
 xmap ga <Plug>(EasyAlign)
 
+augroup textCompletion
+  au!
+  au Filetype html,markdown,text inoremap <buffer> (     ()<++><Left><Left><Left><Left><Left>
+  au Filetype html,markdown,text inoremap <buffer> ((    (
+  au Filetype html,markdown,text inoremap <buffer> ()    ()<++><Left><Left><Left><Left><Left>
+  au Filetype html,markdown,text inoremap <buffer> [     []<++><Left><Left><Left><Left><Left>
+  au Filetype html,markdown,text inoremap <buffer> [[    [
+  au Filetype html,markdown,text inoremap <buffer> []    []<++><Left><Left><Left><Left><Left>
+  au Filetype html,markdown,text inoremap <buffer> {     {}<++><Left><Left><Left><Left><Left>
+  au Filetype html,markdown,text inoremap <buffer> {{    {
+  au Filetype html,markdown,text inoremap <buffer> {}    {}<++><Left><Left><Left><Left><Left>
+  au Filetype html,markdown,text inoremap <buffer> ''    ''<++><Left><Left><Left><Left><Left>
+  au Filetype html,markdown,text inoremap <buffer> ""    ""<++><Left><Left><Left><Left><Left>
+  au Filetype html,markdown,text inoremap <buffer> <     <<Left><Right>><++><Left><Left><Left><Left><Left>
+  au Filetype html,markdown,text inoremap <buffer> <<    <
+
+  au Filetype markdown inoremap <buffer> ``    ``<++><Left><Left><Left><Left><Left>
+  au Filetype markdown inoremap <buffer> **    **<++><Left><Left><Left><Left><Left>
+augroup END
+
+augroup specIndent
+  au!
+  au Filetype tex,markdown,css,scss,html,javascript,vim setlocal shiftwidth=2 tabstop=2 softtabstop=2
+augroup END
+
 " ============ EasyMotion config ============================
 
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
-" s{char}{char} to move to {char}{char}
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
 nmap s <Plug>(easymotion-overwin-f2)
 
-" Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
-
-" Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 " ===========================================================
 
 " Start interactive EasyAlign with a Vim movement
 nmap ga <Plug>(EasyAlign)
-" vim-easy-algin settings end
+" =============== vim-easy-algin settings end ===============
+
+" =============== vim-latex settings ===============
+
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
+" 131001: change default output format
+" http://superuser.com/questions/186283/compile-tex-files-to-pdf-as-default-in-gvim-with-latexsuite-plugin
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_MultipleCompileFormats='pdf'
+
+" 131212: add dir to $PATH for runtime to avoid too long $PATH in other prog
+let $PATH .= '/mnt/c/Program Files/SumatraPDF'
+let g:Tex_ViewRule_pdf='SumatraPDF'
+
+" 131204: For better Chin and Unicode support
+let g:Tex_CompileRule_pdf='xelatex -interaction=nonstopmode $*'
+" LaTeX-Suite settings end
+
+" =========== end of vim-latex settings ============
+
+" ============== Gist settings start ==================
+
+let g:github_user = 'VincentTam'
+let g:gist_clip_command = 'putclip'
+let g:gist_detect_filetype = 1
+let g:gist_get_multiplefile = 1
+
+" ============== Gist settings end ====================
 
 " Improve visibility of cursor
 let &t_ti.="\e[1 q"

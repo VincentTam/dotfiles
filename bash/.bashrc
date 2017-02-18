@@ -120,4 +120,3 @@ fi
 [ -r /home/user/.byobu/prompt ] && . /home/user/.byobu/prompt   #byobu-prompt#
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"

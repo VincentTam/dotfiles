@@ -148,7 +148,7 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " ================ Custom Settings ========================
 
 set textwidth=70
-set pastetoggle=<F5> " Practical Vim Tip 63
+set pastetoggle=<F2> " Practical Vim Tip 63
 
 " Practical Vim Tip 34: Avoid cursors when rcl'g cmd from hist
 cnoremap <C-p> <Up>

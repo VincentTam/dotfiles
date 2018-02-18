@@ -222,12 +222,11 @@ let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf'
 
-" 131212: add dir to $PATH for runtime to avoid too long $PATH in other prog
-let $PATH .= '/mnt/c/Program Files/SumatraPDF'
-let g:Tex_ViewRule_pdf='SumatraPDF'
+" 180218: setting $PATH doesn't work on Win 10 Linux bash
+let g:Tex_ViewRule_pdf='/mnt/c/Program\ Files/SumatraPDF/SumatraPDF.exe'
 
 " 131204: For better Chin and Unicode support
-let g:Tex_CompileRule_pdf='xelatex -interaction=nonstopmode $*'
+let g:Tex_CompileRule_pdf='/mnt/c/Temp/MikTeXPortable/miktex/bin/xelatex.exe -interaction=nonstopmode $*'
 " LaTeX-Suite settings end
 
 " =========== end of vim-latex settings ============

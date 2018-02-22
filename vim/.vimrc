@@ -149,6 +149,7 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 set textwidth=70
 set pastetoggle=<F2> " Practical Vim Tip 63
+set background=dark  " Fix font colors in Windows 10
 
 " Practical Vim Tip 34: Avoid cursors when rcl'g cmd from hist
 cnoremap <C-p> <Up>

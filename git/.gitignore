@@ -1,24 +1,62 @@
-# OS junk files
-._*
-*.swp
-*%*
+### https://raw.github.com/github/gitignore/320a610b9ffba3ff28166370b6dd9f73096e34b7/Global/Windows.gitignore
+
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+
+### https://raw.github.com/github/gitignore/320a610b9ffba3ff28166370b6dd9f73096e34b7/Global/Vim.gitignore
+
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+
+# Temporary
+.netrwhist
 *~
-*.DS_Store
-.ensime
-.ensime_cache
-Desktop.ini
-[Tt]humbs.db
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
 
-# Compiled files
-*.javac
-*.pyc
 
-# PGP Keyrings
-pubring.*
+### https://raw.github.com/github/gitignore/320a610b9ffba3ff28166370b6dd9f73096e34b7/Global/GPG.gitignore
+
 secring.*
-random_seed
-trustdb.*
 
-# Files that might appear on external disks
-.Spotlight-V100
-.Trashes
+
+
+### https://raw.github.com/github/gitignore/320a610b9ffba3ff28166370b6dd9f73096e34b7/Global/Ensime.gitignore
+
+# Ensime specific
+.ensime
+.ensime_cache/
+.ensime_lucene/
+
+
